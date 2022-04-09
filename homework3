@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char strExp[]="1+2*2+3/3+1";
+	int res=strExp[0]-'0';
+	int next,i,n;
+	n=strlen(strExp);
+
+	for(i=1;i<n;i++)
+	{
+		if(strExp[i]=='*')
+		{
+			next=strExp[i+1]-'0';
+			res=res*next;
+			i++;
+		}
+		else if(strExp[i]=='/')
+		{
+			next=strExp[i+1]-'0';
+			res=res/next;
+			i++;
+		}
+		if(strExp[i]=='+')
+		{
+			next=strExp[i+1]-'0';
+			res=res+next;
+			i++;
+		}
+		if(strExp[i]=='-')
+		{
+			next=strExp[i+1]-'0';
+			res=res-next;
+			i++;
+		}
+	}
+	printf("res=%d\n",res);
+}
